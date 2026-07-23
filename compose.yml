@@ -3,7 +3,10 @@ services:
     image: dockurr/windows
     container_name: windows
     environment:
-      VERSION: "11"
+      VERSION: "10"
+      EDITION: "pro"
+      LANGUAGE: "ru-RU"
+      REGION: "BY"
     devices:
       - /dev/kvm
       - /dev/net/tun
@@ -15,5 +18,26 @@ services:
       - 3389:3389/udp
     volumes:
       - ./windows:/storage
+      - ./windows:/storage2
+      - ./windows:/storage3
     restart: always
     stop_grace_period: 2m
+    DISK_SIZE: "256G"
+    DISK2_SIZE: "128G"
+    DISK3_SIZE: "120G"
+    RAM_SIZE: "6G"
+    AUDIO: "Y"
+    USERNAME: "Kirill"
+    PASSWORD: "2015"
+    LANGUAGE: "Russian"
+    DISK_FMT: "qcow2"
+    DISK_TYPE: "nvme"
+    DISK_CACHE: "writeback"
+    SOUND: "intel-hda"
+    VNC_PORT: "5900
+    LOGO: "n"
+    BALLOONING: "y"
+    BALLOONING_MIN_MEM: "50%"
+    BALLOONING_RAM_THRESHOLD: "80.0"
+    BALLOONING_RAM_THRESHOLD_HARD: "90.0"
+    TIMEOUT: "5000"
